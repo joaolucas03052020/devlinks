@@ -27,13 +27,13 @@ Funcionalidades:
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/SEU-USUARIO/devlinks.git
+   git clone https://github.com/joaolucas03052020/devlinks.git
    ```
 2. Abra o arquivo `index.html` no navegador.
 
 ## 🔗 Deploy
 
-Acesse: https://SEU-USUARIO.github.io/devlinks/
+Acesse: https://joaolucas03052020.github.io/devlinks/
 
 ---
 
