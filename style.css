@@ -1,0 +1,217 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variáveis de cor: tema escuro (padrão) */
+:root {
+  --text-color: #ffffff;
+  --bg-color: #0f0b1a;
+  --bg-url: radial-gradient(circle at top, #3b1d6e 0%, #0f0b1a 60%);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: rgba(255, 255, 255, 0.1);
+  --switch-ball: #ffffff;
+}
+
+/* Tema claro */
+.light {
+  --text-color: #000000;
+  --bg-color: #ffffff;
+  --bg-url: radial-gradient(circle at top, #f3e8ff 0%, #ffffff 60%);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: rgba(0, 0, 0, 0.1);
+  --switch-ball: #6d28d9;
+}
+
+body {
+  background: var(--bg-url) no-repeat top center / cover;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+  transition: color 0.4s;
+}
+
+#container {
+  width: 100%;
+  max-width: 588px;
+  margin: 56px auto 0;
+  padding: 0 24px;
+}
+
+/* Perfil */
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+  border-radius: 50%;
+  border: 2px solid var(--stroke-color);
+}
+
+#profile h1 {
+  margin-top: 12px;
+  font-size: 20px;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  opacity: 0.8;
+}
+
+/* Botão de tema */
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: var(--switch-ball);
+  border: 0;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  cursor: pointer;
+  animation: slide-back 0.2s;
+}
+
+.light #switch button {
+  animation: slide-in 0.2s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--switch-bg-url);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* Links */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+  transform: translateY(-2px);
+}
+
+/* Redes sociais */
+#social-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px 0;
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 50%;
+  color: var(--text-color);
+  transition: background 0.2s;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Animação de entrada */
+#container > * {
+  opacity: 0;
+  animation: appear 0.6s ease-out forwards;
+}
+
+#container > *:nth-child(2) { animation-delay: 0.1s; }
+#container > *:nth-child(3) { animation-delay: 0.2s; }
+#container > *:nth-child(4) { animation-delay: 0.3s; }
+#container > *:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in {
+  from { left: 0; }
+  to { left: 50%; }
+}
+
+@keyframes slide-back {
+  from { left: 50%; }
+  to { left: 0; }
+}
+
+/* Media query: telas maiores (desktop) */
+@media (min-width: 700px) {
+  #container {
+    margin-top: 80px;
+  }
+
+  #profile img {
+    width: 128px;
+  }
+
+  #profile h1 {
+    font-size: 24px;
+  }
+}
